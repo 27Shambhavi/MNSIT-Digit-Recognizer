@@ -1,14 +1,16 @@
-import os
-
-st.write("Files in current directory:", os.listdir("."))
-if not os.path.exists("mnist_model.h5"):
-    st.error("Model file not found. Please add mnist_model.h5 to the repo.")
-    st.stop()
-
 import streamlit as st
+import os
 import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image, ImageOps
+
+# Show current directory contents for debugging
+st.write("Files in current directory:", os.listdir("."))
+
+# Check if the model file exists
+if not os.path.exists("mnist_model.h5"):
+    st.error("Model file not found. Please add mnist_model.h5 to the repo.")
+    st.stop()
 
 # Load the model trained in the notebook
 model = load_model("mnist_model.h5")
