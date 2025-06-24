@@ -2,8 +2,5 @@ tensorflow==2.15.0
 streamlit
 pillow
 numpy
-<<<<<<< HEAD
-matplotlib  # if used for visualization in app.py
-=======
 matplotlib  # if used for visualization in app.py
 >>>>>>> 2e1b761dad5b9e26d2b8a452f9ff7fa1104c8b9f
