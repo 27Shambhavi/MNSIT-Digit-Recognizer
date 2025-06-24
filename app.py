@@ -13,7 +13,7 @@ if not os.path.exists("mnist_model.h5"):
     st.stop()
 
 # Load the model trained in the notebook
-model = load_model("mnist_model.keras")
+model = load_model("mnist_model.h5")     # ✅ correct, file is present
 
 st.title("MNIST Digit Recognizer")
 st.write("Upload a 28x28 grayscale image (white digit on black background).")
