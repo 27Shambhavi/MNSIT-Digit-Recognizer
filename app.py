@@ -1,20 +1,19 @@
 import streamlit as st
 import os
 import numpy as np
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 from PIL import Image, ImageOps
 
 # Show current directory contents for debugging
 st.write("Files in current directory:", os.listdir("."))
 
 # Check if the model file exists
-if not os.path.exists("mnist_model.h5"):
-    st.error("Model file not found. Please add mnist_model.h5 to the repo.")
+if not os.path.exists("mnist_model.keras"):
+    st.error("Model file not found. Please add mnist_model.keras to the repo.")
     st.stop()
 
-# Load the model trained in the notebook
-model = load_model("mnist_model.h5")
-
+# Load the model saved in Keras format
+model = load_model("mnist_model.keras")
 
 st.title("MNIST Digit Recognizer")
 st.write("Upload a 28x28 grayscale image (white digit on black background).")
@@ -28,7 +27,7 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", width=150)
 
     img_array = np.array(image).astype("float32") / 255.0  # Normalize
-    img_array = img_array.reshape(1, 28, 28)               # Match input shape for Flatten
+    img_array = img_array.reshape(1, 28, 28)               # Match input shape
 
     prediction = model.predict(img_array)
     predicted_digit = np.argmax(prediction)
